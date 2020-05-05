@@ -6,7 +6,6 @@ export class HtmlRenderer implements AbstractRenderer {
   private answer!: HTMLElement;
 
   public question(): void {
-    this.answer.textContent = '';
     this.answerContainer.classList.remove('is-visible');
   }
 
@@ -16,11 +15,17 @@ export class HtmlRenderer implements AbstractRenderer {
   }
   public showBall() {
     const canvas = document.createElement('section');
-    canvas.className = 'ball-8-container';
+    canvas.className = 'canvas';
+
+    const ballContainer = document.createElement('div');
+    ballContainer.className = 'ball-8-container';
 
     const ball = document.createElement('article');
     ball.className = 'ball';
     this.ball = ball;
+
+    const shadow = document.createElement('div');
+    shadow.className = 'shadow';
 
     const answerPortal = document.createElement('div');
     answerPortal.className = 'answer-portal';
@@ -35,8 +40,13 @@ export class HtmlRenderer implements AbstractRenderer {
 
     answerContainer.appendChild(answer);
     answerPortal.appendChild(answerContainer);
+
     ball.appendChild(answerPortal);
-    canvas.appendChild(ball);
+    ballContainer.appendChild(ball);
+    ballContainer.appendChild(shadow);
+
+    canvas.appendChild(ballContainer);
+
     document.body.appendChild(canvas);
   }
 }

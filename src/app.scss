@@ -3,50 +3,77 @@ body {
   height: 100vh;
 }
 
-section.ball-8-container {
-  height: 100%;
-  width: 100%;
+%centered-flex {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin equal-sides($side) {
+  height: $side;
+  width: $side;
+}
+
+section.canvas {
+  @include equal-sides(100%);
+  @extend %centered-flex;
+  background-color: #333;
+
+  .ball-8-container {
+    position: relative;
+  }
 
   .ball {
     background-color: black;
-    height: 45vw;
-    width: 45vw;
+    @extend %centered-flex;
     border-radius: 50%;
     background-image: radial-gradient(farthest-corner at 40px 40px, #fff 0%, #000 45%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    z-index: 1;
+    position: relative;
+    box-shadow: 45px 25px 30px #111111;
+  }
+
+  .shadow {
+    //background: linear-gradient(transparent, #000);
+    border-radius: 50%;
+    position: absolute;
+    @include equal-sides(25vw);
+    right: -4vw;
+    bottom: 0;
+    transform: skew(-45deg);
+    z-index: 0;
+  }
+
+  @media screen and (max-width: 900px) {
+    .ball {
+      @include equal-sides(75vw);
+    }
+  }
+
+  @media screen and (min-width: 900px) {
+    .ball {
+      @include equal-sides(45vw);
+    }
   }
 
   .answer-portal {
-    width: 50%;
-    height: 50%;
+    @include equal-sides(50%);
+    @extend %centered-flex;
     background-color: black;
     border-radius: 50%;
     box-shadow: 5px 5px 15px grey;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
     box-sizing: border-box;
     padding: 10%;
   }
 
   .answer-container {
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(farthest-corner at 40px 40px, #444 0%, #000 85%);
-
+    @include equal-sides(100%);
+    @extend %centered-flex;
+    background-image: radial-gradient(farthest-corner at 40px 40px, #333 0%, #000 85%);
     background-color: #808080;
     border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 2s ease-in-out;
+    transition: opacity 1s ease-in-out;
     opacity: 0;
 
     &.is-visible {
@@ -59,6 +86,16 @@ section.ball-8-container {
     font-family: sans-serif;
     box-sizing: border-box;
     text-transform: uppercase;
-    padding: 2px;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #aaaaaa;
+    user-select: none;
+  }
+
+  @media screen and (max-width: 900px) {
+    .answer {
+      font-size: 14px;
+    }
   }
 }
