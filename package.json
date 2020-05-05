@@ -2,10 +2,10 @@
   "name": "magic-8-ball",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.ts",
   "scripts": {
-    "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html",
+    "dev": "parcel src/app.html",
+    "build": "parcel build src/app.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,15 +20,10 @@
   },
   "homepage": "https://github.com/Bwca/magic-8-ball#readme",
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.26.5",
+    "tslint": "^6.1.2",
+    "typescript": "^3.8.3"
   },
-  "dependencies": {
-    "three": "^0.116.1"
-  }
+  "dependencies": {}
 }

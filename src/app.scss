@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+section.ball-8-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .ball {
+    background-color: black;
+    height: 45vw;
+    width: 45vw;
+    border-radius: 50%;
+    background-image: radial-gradient(farthest-corner at 40px 40px, #fff 0%, #000 45%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .answer-portal {
+    width: 50%;
+    height: 50%;
+    background-color: black;
+    border-radius: 50%;
+    box-shadow: 5px 5px 15px grey;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 10%;
+  }
+
+  .answer-container {
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(farthest-corner at 40px 40px, #444 0%, #000 85%);
+
+    background-color: #808080;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 2s ease-in-out;
+    opacity: 0;
+
+    &.is-visible {
+      opacity: 1;
+    }
+  }
+
+  .answer {
+    text-align: center;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    padding: 2px;
+  }
+}
