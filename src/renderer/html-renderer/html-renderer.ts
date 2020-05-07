@@ -1,4 +1,5 @@
 import { AbstractRenderer } from '../models/abstract-renderer';
+import './html-renderer.module.scss';
 
 export class HtmlRenderer implements AbstractRenderer {
   public ball!: HTMLElement;
