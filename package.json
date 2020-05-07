@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "parcel src/app.html",
     "tsm": "tsm src --exportType default --nameFormat kebab  ",
-    "build": "parcel build src/app.html",
+    "build": "parcel build src/app.html --no-source-maps",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
