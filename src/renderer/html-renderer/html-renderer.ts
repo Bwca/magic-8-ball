@@ -5,28 +5,28 @@ export class HtmlRenderer implements AbstractRenderer {
   private answerContainer!: HTMLElement;
   private answer!: HTMLElement;
 
-  public question(): void {
+  public hideAnswer(): void {
     this.answerContainer.classList.remove('is-visible');
+  }
+
+  public question(): void {
+    this.hideAnswer();
+    this.ball.classList.add('is-shaking');
   }
 
   public showAnswer(str: string) {
     this.answer.textContent = str;
+    this.ball.classList.remove('is-shaking');
     this.answerContainer.classList.add('is-visible');
   }
+
   public showBall() {
     const canvas = document.createElement('section');
     canvas.className = 'canvas';
 
-    const ballContainer = document.createElement('div');
-    ballContainer.className = 'ball-8-container';
-
     const ball = document.createElement('article');
     ball.className = 'ball';
     this.ball = ball;
-
-    const shadow = document.createElement('div');
-    shadow.className = 'shadow';
-
     const answerPortal = document.createElement('div');
     answerPortal.className = 'answer-portal';
 
@@ -42,10 +42,8 @@ export class HtmlRenderer implements AbstractRenderer {
     answerPortal.appendChild(answerContainer);
 
     ball.appendChild(answerPortal);
-    ballContainer.appendChild(ball);
-    ballContainer.appendChild(shadow);
 
-    canvas.appendChild(ballContainer);
+    canvas.appendChild(ball);
 
     document.body.appendChild(canvas);
   }

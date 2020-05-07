@@ -19,10 +19,6 @@ section.canvas {
   @extend %centered-flex;
   background-color: #333;
 
-  .ball-8-container {
-    position: relative;
-  }
-
   .ball {
     background-color: black;
     @extend %centered-flex;
@@ -31,17 +27,47 @@ section.canvas {
     z-index: 1;
     position: relative;
     box-shadow: 45px 25px 30px #111111;
+
+    &.is-shaking {
+      animation: shake 0.5s;
+      animation-iteration-count: infinite;
+    }
   }
 
-  .shadow {
-    //background: linear-gradient(transparent, #000);
-    border-radius: 50%;
-    position: absolute;
-    @include equal-sides(25vw);
-    right: -4vw;
-    bottom: 0;
-    transform: skew(-45deg);
-    z-index: 0;
+  @keyframes shake {
+    0% {
+      transform: translate(1px, 1px) rotate(0deg);
+    }
+    10% {
+      transform: translate(-1px, -2px) rotate(-1deg);
+    }
+    20% {
+      transform: translate(-3px, 0px) rotate(1deg);
+    }
+    30% {
+      transform: translate(3px, 2px) rotate(0deg);
+    }
+    40% {
+      transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+      transform: translate(-1px, 2px) rotate(-1deg);
+    }
+    60% {
+      transform: translate(-3px, 1px) rotate(0deg);
+    }
+    70% {
+      transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+      transform: translate(-1px, -1px) rotate(1deg);
+    }
+    90% {
+      transform: translate(1px, 2px) rotate(0deg);
+    }
+    100% {
+      transform: translate(1px, -2px) rotate(-1deg);
+    }
   }
 
   @media screen and (max-width: 900px) {
@@ -73,11 +99,13 @@ section.canvas {
     background-image: radial-gradient(farthest-corner at 40px 40px, #333 0%, #000 85%);
     background-color: #808080;
     border-radius: 5px;
-    transition: opacity 1s ease-in-out;
+    transition: all 1s ease-in-out;
     opacity: 0;
+    transform: scale(0.9);
 
     &.is-visible {
       opacity: 1;
+      transform: scale(1);
     }
   }
 

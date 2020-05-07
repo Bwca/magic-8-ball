@@ -8,18 +8,27 @@ sceneRenderer.showBall();
 document.addEventListener('click', getAnswer);
 
 let timeout: number;
+let hideAnswerTImeout: number;
 function getAnswer(): void {
-  if (timeout) {
+  if (timeout || hideAnswerTImeout) {
     return;
   }
   sceneRenderer.question();
-
   timeout = setTimeout(() => {
     clearTimeout(timeout);
     timeout = 0;
     const answer = getRandomAnswer();
-    sceneRenderer.showAnswer(answer.text);
+    displayAnswer(answer);
   }, 2000);
+}
+
+function displayAnswer(answer: Answer): void {
+  sceneRenderer.showAnswer(answer.text);
+  hideAnswerTImeout = setTimeout(() => {
+    clearTimeout(hideAnswerTImeout);
+    hideAnswerTImeout = 0;
+    sceneRenderer.hideAnswer();
+  }, 5000);
 }
 
 function getRandomAnswer(): Answer {
