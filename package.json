@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "dev": "parcel src/app.html",
+    "dev": "parcel ./src/app.html",
     "tsm": "tsm src --exportType default --nameFormat kebab  ",
     "build": "parcel build src/app.html --no-source-maps",
     "test": "echo \"Error: no test specified\" && exit 1"
