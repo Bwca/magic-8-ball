@@ -1,5 +1,6 @@
 import { AbstractRenderer } from '../models/abstract-renderer';
-import './html-renderer.module.scss';
+import { HtmlRendererStyle } from './html-renderer.style.enum';
+import './html-renderer.style.scss';
 
 export class HtmlRenderer implements AbstractRenderer {
   public ball!: HTMLElement;
@@ -7,36 +8,36 @@ export class HtmlRenderer implements AbstractRenderer {
   private answer!: HTMLElement;
 
   public hideAnswer(): void {
-    this.answerContainer.classList.remove('is-visible');
+    this.answerContainer.classList.remove(HtmlRendererStyle.IsVisible);
   }
 
   public question(): void {
     this.hideAnswer();
-    this.ball.classList.add('is-shaking');
+    this.ball.classList.add(HtmlRendererStyle.IsShaking);
   }
 
   public showAnswer(str: string) {
     this.answer.textContent = str;
-    this.ball.classList.remove('is-shaking');
-    this.answerContainer.classList.add('is-visible');
+    this.ball.classList.remove(HtmlRendererStyle.IsShaking);
+    this.answerContainer.classList.add(HtmlRendererStyle.IsVisible);
   }
 
-  public showBall() {
+  public showBall(host: HTMLElement) {
     const canvas = document.createElement('section');
-    canvas.className = 'canvas';
+    canvas.className = HtmlRendererStyle.Canvas;
 
     const ball = document.createElement('article');
-    ball.className = 'ball';
+    ball.className = HtmlRendererStyle.Ball;
     this.ball = ball;
     const answerPortal = document.createElement('div');
-    answerPortal.className = 'answer-portal';
+    answerPortal.className = HtmlRendererStyle.AnswerPortal;
 
     const answerContainer = document.createElement('div');
-    answerContainer.className = 'answer-container';
+    answerContainer.className = HtmlRendererStyle.AnswerContainer;
     this.answerContainer = answerContainer;
 
     const answer = document.createElement('div');
-    answer.className = 'answer';
+    answer.className = HtmlRendererStyle.Answer;
     this.answer = answer;
 
     answerContainer.appendChild(answer);
@@ -46,6 +47,6 @@ export class HtmlRenderer implements AbstractRenderer {
 
     canvas.appendChild(ball);
 
-    document.body.appendChild(canvas);
+    host.appendChild(canvas);
   }
 }

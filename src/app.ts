@@ -3,20 +3,21 @@ import { ANSWERS } from './answers.const';
 import { makeRenderer } from './renderer';
 
 const sceneRenderer = makeRenderer();
-sceneRenderer.showBall();
+sceneRenderer.showBall(document.body);
 
 document.addEventListener('click', getAnswer);
 
-let timeout: number;
-let hideAnswerTImeout: number;
+let timeout: NodeJS.Timeout | null;
+let hideAnswerTImeout: NodeJS.Timeout | null;
+
 function getAnswer(): void {
   if (timeout || hideAnswerTImeout) {
     return;
   }
   sceneRenderer.question();
   timeout = setTimeout(() => {
-    clearTimeout(timeout);
-    timeout = 0;
+    clearTimeout(timeout as NodeJS.Timeout);
+    timeout = null;
     const answer = getRandomAnswer();
     displayAnswer(answer);
   }, 2000);
@@ -25,8 +26,8 @@ function getAnswer(): void {
 function displayAnswer(answer: Answer): void {
   sceneRenderer.showAnswer(answer.text);
   hideAnswerTImeout = setTimeout(() => {
-    clearTimeout(hideAnswerTImeout);
-    hideAnswerTImeout = 0;
+    clearTimeout(hideAnswerTImeout as NodeJS.Timeout);
+    hideAnswerTImeout = null;
     sceneRenderer.hideAnswer();
   }, 5000);
 }
