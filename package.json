@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "parcel ./src/index.html",
     "tsm": "tsm src --exportType default --nameFormat kebab  ",
-    "build": "parcel build src/index.html --no-source-maps",
+    "build": "parcel build src/index.html --public-url 'magic-8-ball/' --no-source-maps",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
