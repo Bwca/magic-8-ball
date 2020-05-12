@@ -73,7 +73,7 @@ section.canvas {
 
   @media screen and (min-width: 900px) {
     .ball {
-      @include equal-sides(45vw);
+      @include equal-sides(35vw);
     }
   }
 
@@ -118,7 +118,7 @@ section.canvas {
 
   @media screen and (max-width: 900px) {
     .answer {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 }

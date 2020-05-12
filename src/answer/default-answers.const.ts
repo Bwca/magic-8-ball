@@ -1,7 +1,7 @@
-import { AnswerTypes } from './answer/answer-types.enum';
-import { Answer } from './answer/answer.model';
+import { AnswerTypes } from './answer-types.enum';
+import { Answer } from './answer.model';
 
-export const ANSWERS: Readonly<Answer[]> = [
+export const DEFAULT_ANSWERS: Readonly<Answer[]> = [
   {
     text: 'It is certain.',
     type: AnswerTypes.Affirmative,

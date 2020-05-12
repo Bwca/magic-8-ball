@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "dev": "parcel ./src/index.html",
-    "build": "parcel build src/index.html --public-url './' --no-source-maps",
+    "dev": "parcel ./src/index.pug",
+    "build": "parcel build src/index.pug --public-url './' --no-source-maps",
     "css-types": "css-types",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,9 +24,12 @@
     "@types/node": "^13.13.5",
     "css-types": "^1.0.2",
     "parcel-bundler": "^1.12.4",
+    "pug": "^2.0.4",
     "sass": "^1.26.5",
     "tslint": "^6.1.2",
     "typescript": "^3.8.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/pug": "^2.0.4"
+  }
 }
