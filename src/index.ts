@@ -1,11 +1,14 @@
 import { Answer } from './answer/answer.model';
 import { ANSWERS_PARAMS_KEY } from './answer/answers-params-key.const';
 import { DEFAULT_ANSWERS } from './answer/default-answers.const';
+import { initPwa } from './pwa-loader';
 import { makeRenderer } from './renderer';
 
 document.addEventListener('DOMContentLoaded', main);
 
 function main(): void {
+  initPwa();
+
   const answers = loadAnswers();
   const sceneRenderer = makeRenderer();
   sceneRenderer.showBall(document.body);
