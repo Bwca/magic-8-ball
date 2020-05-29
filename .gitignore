@@ -1,3 +1,4 @@
 node_modules
 dist
 .cache
+e2e/env
